@@ -93,7 +93,7 @@ void calculate_standard_bundle_hash(const char from_addr[], const char to_addr[]
 
     while(!valid_bundle) {
         
-        cx_sha3_t sha3;
+        SHA3_CTX sha3;
         kerl_initialize(&sha3);
 
         
