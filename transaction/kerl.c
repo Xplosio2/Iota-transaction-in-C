@@ -27,7 +27,7 @@ void kerl_absorb_chunk(cx_sha3_t *sha3, const unsigned char *bytes)
     kerl_absorb_bytes(sha3, bytes, NUM_HASH_BYTES);
 }
 
-int kerl_absorb_trits(cx_sha3_t *sha3, const trit_t trits_in[], uint16_t len)
+int kerl_absorb_trits(SHA3_CTX *ctx, const trit_t trits_in[], uint16_t len)
 {
     for (uint8_t i = 0; i < (len/243); i++) {
         // Last trit to zero
@@ -44,7 +44,7 @@ int kerl_absorb_trits(cx_sha3_t *sha3, const trit_t trits_in[], uint16_t len)
     return 0;
 }
 
-int kerl_squeeze_trits(cx_sha3_t *sha3, trit_t trits_out[], uint16_t len)
+int kerl_squeeze_trits(SHA3_CTX *ctx, trit_t trits_out[], uint16_t len)
 {
     (void) len;
     unsigned char bytes_out[48] = {0};
